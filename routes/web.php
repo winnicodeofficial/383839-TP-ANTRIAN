@@ -86,23 +86,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/settings', [SettingController::class, 'index'])->name('settings');
     Route::post('/settings', [SettingController::class, 'simpan'])->name('settings.simpan');
 
-    Route::group(['prefix' => 'barang', 'as' => 'barang.'], function () {
-        Route::get('/print', [PdfController::class, 'generatePdf'])->name('print');
-        Route::get('/print/{id}', [PdfController::class, 'generatePdfOne'])->name('print.one');
-    });
-
-    Route::get('/dashboard', [HomeController::class, 'index'])->name('home');
-    Route::resource('/barang', CommodityController::class);
-    Route::resource('/bantuan-dana-operasional', SchoolOperationalAssistance::class);
-    Route::resource('/ruang', CommodityLocationController::class);
-    Route::resource('/karyawan', KaryawanController::class);
-    Route::resource('/surat', SuratController::class);
-
-    Route::resource('/commodities/json', CommodityAjaxController::class);
-    Route::resource('/school-operational/json', SchoolOperationalAssistanceAjaxController::class);
-    Route::resource('/school-karyawan/json', KaryawanAjaxController::class);
-    Route::resource('/commodity-locations/json', CommodityLocationAjaxController::class);
-
     Route::resource('/data-pasien', DataPasienController::class);
     Route::get('/export-pasien-excel', [PasienExportController::class, 'exportPasien']);
     Route::resource('/data-dokter', DataDokterController::class);
