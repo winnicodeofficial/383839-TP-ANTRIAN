@@ -1,0 +1,326 @@
+    <!-- Form Login -->
+    
+<!-- Mirrored from daftarpuskesmas.depok.go.id/Login/index by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 09 Feb 2024 15:42:53 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Online I Puskesmas Kota Depok</title>
+
+    <!-- Favicons-->
+    <link rel="shortcut icon" href="../assets-view/img/favicon.png" type="image/x-icon">
+
+    <link href="../assets-view/css-login/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../assets-view/css-login/fontawesome-all.min.css">
+    <link rel="stylesheet" type="text/css" href="../assets-view/css-login/iofrm-stylee.css">
+    <link rel="stylesheet" type="text/css" href="../assets-view/css-login/iofrm-theme8.css">
+    <link rel="stylesheet" href="../assets-admin/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css">
+
+
+    <div class="form-body" class="container-fluid">
+    	<div class="row">
+    		<div class="img-holder">
+    			<div class="bg"></div>
+    			<div class="info-holder">
+    				<h3 style="font-weight: 700 !important;">Registrasi Online Puskesmas Kota Depok.</h3>
+    				<p>Melayani Pasien Dengan Lebih Baik.</p>
+    				<img src="../assets-view/img/4.png" alt="">
+    			</div>
+    		</div>
+    		<div class="form-holder">
+    			<div class="form-content">
+    				<div class="form-items">
+    					<div class="jumbotron jumbotron-fluid kotak">
+    						<div class="container">
+    							<img src="../assets-view/img/4.png" class="gambar" alt="">
+    						</div>
+    					</div>
+    					<h3 style="font-weight: 650 !important; margin-bottom: 0px;">Pendaftaran Online</h3>
+    					<p style="margin-bottom: 20px !important;">Puskesmas Kota Depok</p>
+			       		<p style="font-size :16px;" id="title">Masukan NIK Pasien atau No BPJS</p>
+    					<form id="login-form" action="https://daftarpuskesmas.depok.go.id/Login/aksi_login" method="post">
+							<div id="login-by-nik-form">
+								<input class="form-control" id="nik" title="Minimal 16 karakter" name="nik" type="number" placeholder="masukkan NIK / No BPJS" autofocus autocomplete="off">
+								<button type="button" id="btn-login-by-nik" class="btn btn ibtn" style="background-color:white; border-radius: 10px; height: 43px; color:#2CCFBB;">Masuk</button>
+								<br><br>
+								<span class="text-white" id="ket-login">Pasien tidak punya NIK ? klik </span>
+								<a href="#" id="login-by-name-btn">Disini</a>
+							</div>
+							<div id="login-by-name-form">
+								<input class="form-control" id="name" name="name" type="text" placeholder="masukan nama" autocomplete="off">
+                <div class="date datepicker" id="dateantrian">
+                  <input class="form-control" id="birthDate"  name="tgl_lahir" type="text" placeholder="tanggal lahir (dd-mm-yyyy)">
+                </div>
+								<button type="button" class="btn btn ibtn" id="btn-cari" style="background-color:white; border-radius: 10px; height: 43px; color:#2CCFBB;">Cari</button>
+								<br><br>
+								<span class="text-white" id="ket-login">Lebih mudah daftar menggunakan NIK. Klik </span>
+								<a href="#" id="login-by-nik-btn">Disini</a>
+							</div>
+						</form>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+
+    <style>
+    	.gambar {
+    		display: none;
+    	}
+    	.kotak {
+    		display: none;
+    	}
+    	.form-body {
+    		overflow-y: auto;
+    		overflow-x: hidden;
+    	}
+    	@media only screen and (max-width: 600px) {
+    		.gambar {
+    			display: block;
+    			width: 100%;
+    			justify-content: center;
+  			}
+  			.form-holder .form-content{
+  				padding: 24px 60px 60px;
+  			}
+    		.kotak {
+    			display: block;
+    			width: auto;
+    			background-color: white;
+    			margin: -10% -24% 11% -24%;
+    		}
+    		.regis {
+      			margin-top: -64%;
+  			}
+    	}
+    </style>
+
+    <script type="text/javascript" src="../assets-view/js-login/jquery.min.js"></script>
+    <script type="text/javascript" src="../assets-view/js-login/popper.min.js"></script>
+    <script type="text/javascript" src="../assets-view/js-login/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../assets-view/js-login/main.js"></script>
+  	<link rel="stylesheet" type="text/css" href="../assets-admin/vendors/sweetalert2/sweetalert2.min.css"/>
+  	<script src="../assets-admin/vendors/sweetalert2/sweetalert2.min.js"></script>
+
+    <script src="../assets-admin/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <script src="../assets-admin/js/datepicker.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+      $('#login-by-name-form').hide();
+    })
+
+    function success() {
+      if (document.getElementById("textsend").value == "") {
+        document.getElementById('button').disabled = true;
+        document.getElementById('regis').disabled = true;
+      } else if (document.getElementById("textsend").value == "123") {
+        document.getElementById('button').disabled = false;
+        document.getElementById('regis').disabled = true;
+      } else {
+        document.getElementById('button').disabled = true;
+        document.getElementById('regis').disabled = false;
+      }
+    }
+
+    $('#textsend').keyup(function () {
+      if ($(this).val() == '') {
+        $(this).prev().hide();
+      } else if ($(this).val() == '123') {
+        $(this).prev().hide();
+      } else {
+        $(this).prev().show();
+      }
+    });
+
+    $('#login-by-name-btn').click(function() {
+      showLoginWithNameForm();
+    })
+
+    $('#login-by-nik-btn').click(function() {
+      showLoginWithNIKForm();
+    })
+
+    function showLoginWithNameForm() {
+      $('#login-by-name-form').show()
+      $('#login-by-nik-form').hide()
+      $('#title').text('Masukkan Nama dan Tanggal Lahir')
+      $('#ket-login').text('Lebih mudah daftar menggunakan NIK. Klik ')
+    }
+
+    function showLoginWithNIKForm() {
+      $('#login-by-name-form').hide()
+      $('#login-by-nik-form').show()
+      $('#title').text('Masukkan NIK atau No BPJS')
+      $('#ket-login').text('Pasien tidak punya NIK ? klik')
+    }
+
+    $('#btn-cari').click(function() {
+      var name = $('#name').val();
+      var birthDate = $('#birthDate').val();
+      getPasienByNameAndBirthDate(name, birthDate);
+    })
+
+    $('#btn-login-by-nik').click(function() {
+      var unique_key = $('#nik').val();
+      getPasienPasienByUniqueKey(unique_key);
+    })
+
+    function getPasienByNameAndBirthDate(nama, tgl_lahir) {
+      var url = 'https://daftarpuskesmas.depok.go.id/Pasien/getPasienByNameAndBirthDate'+'/'+nama+'/'+tgl_lahir;
+      $.ajax({
+        type: "GET",
+        url: url,
+        success: function (data) {
+          var result = JSON.parse(data)
+          if (result.length == 0) {
+            showLoginFailedAlert()
+          } else {
+            var i = 0;
+            showConfirmLoginAlert(result, i)
+          }
+        }
+      });
+    }
+
+    function getPasienPasienByUniqueKey(unique_key) {
+      var url = 'https://daftarpuskesmas.depok.go.id/Pasien/getPasienPasienByUniqueKey'+'/'+unique_key;
+      $.ajax({
+        type: "GET",
+        url: url,
+        success: function (data) {
+          if (data.length == 1) {
+            showLoginFailedAlert()
+          } else {
+            var result = JSON.parse(data)
+            var i = 0;
+            showLoginByNIKConfirmAlert(result, i)
+          }
+        }
+      });
+    }
+
+    function showLoginFailedAlert() {
+      var title = 'Pasien tidak ditemukan'
+      var html = 'pencarian pasien dengan data yang dimasukan tidak ditemukan'
+      swalWithBootstrapButtons.fire({
+        title: title,
+        html: html,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonClass: 'mr-2',
+        confirmButtonText: 'daftar pasien baru',
+        cancelButtonText: 'Login dengan NIK / No BPJS',
+      }).then((result) => {
+      if (result.value) {
+        window.location.href = 'https://daftarpuskesmas.depok.go.id/Register/register_pasien_baru';
+      } else {
+        showLoginWithNIKForm()
+      }
+      })
+    }
+
+    function showLoginFailedWithNIKAlert() {
+      var title = 'Pasien tidak ditemukan'
+      var html = 'pencarian pasien dengan data yang dimasukan tidak ditemukan.'
+      swalWithBootstrapButtons.fire({
+        title: title,
+        html: html,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonClass: 'mr-2',
+        confirmButtonText: 'Daftar pasien baru',
+        cancelButtonText: 'Cari dengan nama',
+      }).then((result) => {
+      if (result.value) {
+        window.location.href = 'https://daftarpuskesmas.depok.go.id/Register/register_pasien_baru';
+      } else {
+        showLoginWithNameForm()
+      }
+      })
+    }
+
+    function loginWithNameAndBirthDate(data) {
+      var url = 'loginWithNameAndBirthDate.html';
+      $.ajax({
+        type: "POST",
+        url: url,
+        data: {
+          id_pasien: data.id,
+          nik: data.nik,
+          no_bpjs: data.no_bpjs,
+          name: data.nama,
+        },
+        success: function (data) {
+          window.location.href = 'https://daftarpuskesmas.depok.go.id/Pasien_Lama';
+        }
+      });
+    }
+
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger mr-2'
+      },
+      buttonsStyling: false,
+    })
+
+    function showLoginByNIKConfirmAlert(data) {
+      var title = ' Pasien Ditemukan'
+      var html =  'Apakah betul ini data anda ? <br>' +
+            '<span>Nama : '+data.Nama+'</span><br>' +
+            '<span>Tanggal Lahir : '+data.TanggalLahir+'</span><br>' +
+            '<span>Alamat: '+data.Alamat+'</span>'
+      var showCancelButton = true
+      swalWithBootstrapButtons.fire({
+        title: title,
+        html: html,
+        icon: 'warning',
+        showCancelButton: showCancelButton,
+        confirmButtonClass: 'mr-2',
+        confirmButtonText: 'Ya',
+        cancelButtonText: 'Tidak',
+      }).then((result) => {
+        if (result.value) {
+          window.location.href = 'https://daftarpuskesmas.depok.go.id/Login/loginProses'+'/'+data.Id;
+          // loginWithNameAndBirthDate(data[i])
+        }
+      })
+    }
+
+    function showConfirmLoginAlert(data, i) {
+      var title = data.length+' Pasien Ditemukan'
+      var html =  '<i>'+(i+1)+'/'+data.length+'</i> ? <br>' +
+            'Apakah betul ini data anda ? <br>' +
+            '<span>Nama : '+data[i].nama+'</span><br>' +
+            '<span>Tanggal Lahir : '+data[i].tgl_lahir+'</span><br>' +
+            '<span>Alamat: '+data[i].alamat+'</span>'
+      var showCancelButton = true
+      swalWithBootstrapButtons.fire({
+        title: title,
+        html: html,
+        icon: 'warning',
+        showCancelButton: showCancelButton,
+        confirmButtonClass: 'mr-2',
+        confirmButtonText: 'Ya',
+        cancelButtonText: 'Next',
+      }).then((result) => {
+        if (result.value) {
+          window.location.href = 'https://daftarpuskesmas.depok.go.id/Pasien/checkPasienInPO'+'/'+data[i].id;
+          // loginWithNameAndBirthDate(data[i])
+        } else {
+          if (i+1 == data.length) {
+            showLoginFailedAlert()
+          } else {
+            i++;
+            showConfirmLoginAlert(data, i)
+          }
+        }
+      })
+    }
+
+    $('#birthDate').datepicker({
+      format: "dd-mm-yyyy",
+      todayHighlight: true,
+      autoclose: true
+    });
+
+    </script>
