@@ -17,10 +17,6 @@ Pendaftaran Antrian Online.
 
 **DataBase:** MySql
 
-## Instalasi
-
-## Screenshots
-
 ## Feedback
 
 If you have any feedback, please reach out to us at development.
