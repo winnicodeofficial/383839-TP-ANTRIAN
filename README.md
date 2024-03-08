@@ -1,5 +1,5 @@
 
-# Maintenace | Laravel + Bootstrap  
+# Antrian | Laravel + Bootstrap  
 
 Pendaftaran Antrian Online.
 
