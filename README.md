@@ -1,7 +1,7 @@
 
 # Maintenace | Laravel + Bootstrap  
 
-Pendaftaran Online.
+Pendaftaran Antrian Online.
 
 ## DEMO
 
