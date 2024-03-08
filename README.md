@@ -1,5 +1,5 @@
 
-# Antrian | Laravel + Bootstrap  
+# Sistem Antrian | Laravel + Bootstrap  
 
 Pendaftaran Antrian Online.
 
